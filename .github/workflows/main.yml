@@ -18,3 +18,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python refresh_tokens.py
+
