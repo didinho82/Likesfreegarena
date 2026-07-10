@@ -1,28 +1,20 @@
 name: Daily Token Refresh
-
 on:
   schedule:
-    # Roda todos os dias à meia-noite (UTC)
     - cron: '0 0 * * *'
-  workflow_dispatch: # Permite rodar manualmente pelo painel do GitHub
-
+  workflow_dispatch:
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/checkout@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
       - name: Install dependencies
         run: pip install requests
-
       - name: Run Refresh Script
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python refresh_tokens.py
-        
