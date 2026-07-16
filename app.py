@@ -22,7 +22,7 @@ except ImportError as e:
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
+@app.route('/online/')
 def home():
     return jsonify({
         "status": "VIP API Online",
